@@ -322,21 +322,36 @@ function handleContactSubmit(event) {
     const subject = document.getElementById("c-subject").value;
     const message = document.getElementById("c-message").value;
     
+    // Don't proceed if fields are empty
+    if (!name || !email || !subject || !message) return;
+    
     // Create mailto link
     const mailtoUrl = `mailto:luc.samain@free.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Nom: " + name + "\nEmail: " + email + "\n\n" + message)}`;
-    
-    // Trigger simulated success visual
-    const successMsg = document.getElementById("contact-success");
-    successMsg.classList.remove("hidden");
     
     // Open mail client
     window.location.href = mailtoUrl;
     
-    // Reset form after 2 seconds
+    // Show success message AFTER sending
+    const successMsg = document.getElementById("contact-success");
+    successMsg.classList.remove("hidden");
+    successMsg.style.opacity = "1";
+    successMsg.style.transition = "none";
+    
+    // Reset form immediately
+    document.getElementById("contact-form").reset();
+    
+    // Start fade-out after 27 seconds, completing at 30 seconds
     setTimeout(() => {
-        document.getElementById("contact-form").reset();
-        successMsg.classList.add("hidden");
-    }, 3000);
+        successMsg.style.transition = "opacity 3s ease";
+        successMsg.style.opacity = "0";
+        
+        // After fade completes, hide entirely
+        setTimeout(() => {
+            successMsg.classList.add("hidden");
+            successMsg.style.opacity = "1";
+            successMsg.style.transition = "none";
+        }, 3000);
+    }, 27000);
 }
 
 /* ==========================================================================
@@ -405,9 +420,6 @@ function lockGallery() {
     if (groups) groups.innerHTML = "";
     if (tabs) tabs.innerHTML = "";
     if (grid) grid.innerHTML = "";
-    
-    const notice = document.getElementById("anaglyph-notice");
-    if (notice) notice.classList.add("hidden");
 }
 
 // Convert Hex String to Uint8Array
@@ -556,16 +568,6 @@ function selectGalleryCategory(fileKey) {
     });
     const activeBtn = document.getElementById(`tab-${fileKey}`);
     if (activeBtn) activeBtn.classList.add("active");
-    
-    // Toggle 3D banner notice
-    const notice = document.getElementById("anaglyph-notice");
-    if (notice) {
-        if (fileKey === "brulon_3d") {
-            notice.classList.remove("hidden");
-        } else {
-            notice.classList.add("hidden");
-        }
-    }
     
     // Render photos grid
     renderPhotosGrid(fileKey);

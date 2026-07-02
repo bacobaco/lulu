@@ -35,6 +35,11 @@
     padding: 0;
 }
 
+/* Utility: Hidden */
+.hidden {
+    display: none !important;
+}
+
 html, body {
     height: 100%;
     scroll-behavior: smooth;

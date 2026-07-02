@@ -321,6 +321,6 @@ window.JOURNAL_DATA = [
     "month": "JANVIER 2003",
     "date": "Du 27 janvier 3H04 au 31 janvier 12H00",
     "title": "",
-    "content": "Je suis à la maternité pour des cours de chant, c'est ma grande passion, avec comme professeur ma maman (la grande Isabelle Chol) et secondé par mon papa (l'inimitable Damien Samain)."
+    "content": "Je suis à la maternité pour des cours de chant, c'est ma grande passion, avec comme professeur ma maman (la grande Isabelle) et secondé par mon papa (l'inimitable Damien)."
   }
 ];

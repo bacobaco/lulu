@@ -131,25 +131,6 @@ function initGrowthChart() {
     const container = document.getElementById("interactive-growth-chart");
     if (!container) return;
     
-    // Toggle tabs
-    const btnInteractive = document.getElementById("btn-chart-interactive");
-    const btnLegacy = document.getElementById("btn-chart-legacy");
-    const legacyView = document.getElementById("legacy-chart-view");
-    
-    btnInteractive.addEventListener("click", () => {
-        btnInteractive.classList.add("active");
-        btnLegacy.classList.remove("active");
-        container.parentElement.classList.remove("hidden");
-        legacyView.classList.add("hidden");
-    });
-    
-    btnLegacy.addEventListener("click", () => {
-        btnLegacy.classList.add("active");
-        btnInteractive.classList.remove("active");
-        container.parentElement.classList.add("hidden");
-        legacyView.classList.remove("hidden");
-    });
-    
     // Render SVG Growth Chart
     // Luc's weights: 0m: 3.970, 8m: 11.03
     // Standard growth dataset (Median, +2SD, -2SD)
@@ -340,9 +321,9 @@ function handleContactSubmit(event) {
     // Reset form immediately
     document.getElementById("contact-form").reset();
     
-    // Start fade-out after 27 seconds, completing at 30 seconds
+    // Start fade-out after 1.5 seconds, completing in 1 second (2.5 seconds total)
     setTimeout(() => {
-        successMsg.style.transition = "opacity 3s ease";
+        successMsg.style.transition = "opacity 1.0s ease";
         successMsg.style.opacity = "0";
         
         // After fade completes, hide entirely
@@ -350,8 +331,8 @@ function handleContactSubmit(event) {
             successMsg.classList.add("hidden");
             successMsg.style.opacity = "1";
             successMsg.style.transition = "none";
-        }, 3000);
-    }, 27000);
+        }, 1000);
+    }, 1500);
 }
 
 /* ==========================================================================

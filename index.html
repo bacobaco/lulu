@@ -173,20 +173,22 @@
                         Suivez ma progression de poids et de taille au cours de ma première année. Les points noirs indiquent les mesures officielles relevées dans mon carnet de santé.
                     </p>
                     
-                    <div class="chart-container">
-                        <!-- Custom Interactive Chart will render here dynamically via Javascript -->
-                        <div id="interactive-growth-chart" class="growth-chart"></div>
-                    </div>
-                    
-                    <div class="chart-tabs">
-                        <button class="chart-tab-btn active" id="btn-chart-interactive">📊 Courbe dynamique</button>
-                        <button class="chart-tab-btn" id="btn-chart-legacy">📷 Courbe d'origine (GIF)</button>
-                    </div>
-                    
-                    <!-- Legacy GIF view -->
-                    <div id="legacy-chart-view" class="legacy-chart-view hidden text-center">
-                        <h4>Courbe d'origine de mon poids</h4>
-                        <img border="0" src="mon_po1.gif" alt="Courbe d'origine" class="legacy-chart-img">
+                    <div class="grid-2">
+                        <!-- Custom Interactive Chart -->
+                        <div class="glass-panel text-center">
+                            <h4 class="mb-3">📊 Courbe interactive de croissance</h4>
+                            <div class="chart-container">
+                                <div id="interactive-growth-chart" class="growth-chart"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Legacy GIF view -->
+                        <div class="glass-panel text-center">
+                            <h4 class="mb-3">📷 Courbe d'origine de mon poids</h4>
+                            <div class="legacy-chart-view text-center">
+                                <img border="0" src="mon_po1.gif" alt="Courbe d'origine" class="legacy-chart-img">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -302,29 +304,30 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <form id="contact-form" class="contact-form" onsubmit="handleContactSubmit(event)">
-                        <div class="form-group">
-                            <label for="c-name">Nom complet</label>
-                            <input type="text" id="c-name" placeholder="Votre nom..." required class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="c-email">Adresse e-mail</label>
-                            <input type="email" id="c-email" placeholder="votre.email@exemple.com" required class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="c-subject">Objet</label>
-                            <input type="text" id="c-subject" placeholder="Sujet du message..." required class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="c-message">Votre message</label>
-                            <textarea id="c-message" rows="5" placeholder="Écrivez votre message ici..." required class="form-control"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Envoyer le message</button>
-                        <div id="contact-success" class="contact-success-msg hidden">
-                            ✅ Message envoyé avec succès !
-                        </div>
-                    </form>
+                    <div class="contact-form-card glass-panel">
+                        <form id="contact-form" class="contact-form" onsubmit="handleContactSubmit(event)">
+                            <div class="form-group">
+                                <label for="c-name">Nom complet</label>
+                                <input type="text" id="c-name" placeholder="Votre nom..." required class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="c-email">Adresse e-mail</label>
+                                <input type="email" id="c-email" placeholder="votre.email@exemple.com" required class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="c-subject">Objet</label>
+                                <input type="text" id="c-subject" placeholder="Sujet du message..." required class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="c-message">Votre message</label>
+                                <textarea id="c-message" rows="5" placeholder="Écrivez votre message ici..." required class="form-control"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Envoyer le message</button>
+                            <div id="contact-success" class="contact-success-msg hidden">
+                                ✅ Message envoyé avec succès !
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </section>
 

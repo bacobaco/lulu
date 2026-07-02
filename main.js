@@ -396,6 +396,16 @@ function lockGallery() {
     document.getElementById("passcode-input").value = "";
     document.getElementById("photo-lock-screen").classList.remove("hidden");
     document.getElementById("photo-gallery-content").classList.add("hidden");
+    
+    // Clear DOM content to prevent photos from staying visible
+    const groups = document.getElementById("gallery-groups");
+    const tabs = document.getElementById("gallery-tabs");
+    const grid = document.getElementById("gallery-grid");
+    
+    if (groups) groups.innerHTML = "";
+    if (tabs) tabs.innerHTML = "";
+    if (grid) grid.innerHTML = "";
+    
     const notice = document.getElementById("anaglyph-notice");
     if (notice) notice.classList.add("hidden");
 }

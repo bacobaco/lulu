@@ -659,13 +659,8 @@ function updateLightboxContent() {
         `;
     } else {
         // Render a standard Image view
-        // High-res path resolution
-        const filename = item.src.split('/').pop().split('\\').pop();
-        // high-res is stored in images/ folder directly
-        const highResUrl = `images/${filename}`;
-        
         container.innerHTML = `
-            <img src="${highResUrl}" alt="Photo de Lulu" id="lightbox-img" class="lightbox-img">
+            <img src="${item.src}" alt="Photo de Lulu" id="lightbox-img" class="lightbox-img">
             <div class="lightbox-caption" id="lightbox-caption">${item.caption || ''}</div>
         `;
     }

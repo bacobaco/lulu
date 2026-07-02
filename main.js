@@ -691,3 +691,4 @@ function openLegacyGallery(folderName) {
     // We already copied them!
     window.open(`${folderName}/index.html`, '_blank');
 }
+// Build trigger: 1783002280

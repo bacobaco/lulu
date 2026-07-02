@@ -5,6 +5,7 @@
 // State Management
 let currentSection = 'home';
 let decryptedGalleries = null;
+let currentActiveGroup = 'baby_journal';
 let currentActiveCategory = null;
 let lightboxItems = [];
 let currentLightboxIndex = 0;
@@ -376,12 +377,9 @@ async function handlePasscodeSubmit(event) {
         document.getElementById("photo-lock-screen").classList.add("hidden");
         document.getElementById("photo-gallery-content").classList.remove("hidden");
         
-        // Render gallery categories tabs
-        renderGalleryTabs();
-        
-        // Trigger render first tab
-        const firstTab = Object.keys(decryptedGalleries)[0];
-        selectGalleryCategory(firstTab);
+        // Render groups and select first group
+        renderGalleryGroups();
+        selectGalleryGroup('baby_journal');
         
     } catch (e) {
         console.error("Decryption failed:", e);
@@ -398,6 +396,8 @@ function lockGallery() {
     document.getElementById("passcode-input").value = "";
     document.getElementById("photo-lock-screen").classList.remove("hidden");
     document.getElementById("photo-gallery-content").classList.add("hidden");
+    const notice = document.getElementById("anaglyph-notice");
+    if (notice) notice.classList.add("hidden");
 }
 
 // Convert Hex String to Uint8Array
@@ -471,13 +471,60 @@ async function decryptCustomStream(ciphertext, keyBytes, iv) {
 /* ==========================================================================
    RENDER PHOTO ALBUMS & VIDEO TILES
    ========================================================================== */
-function renderGalleryTabs() {
-    const tabsContainer = document.getElementById("gallery-tabs");
-    if (!tabsContainer || !decryptedGalleries) return;
+function renderGalleryGroups() {
+    const groupsContainer = document.getElementById("gallery-groups");
+    if (!groupsContainer || !decryptedGalleries) return;
     
     let html = "";
-    Object.keys(decryptedGalleries).forEach((fileKey, index) => {
-        const g = decryptedGalleries[fileKey];
+    Object.keys(decryptedGalleries).forEach(groupKey => {
+        const group = decryptedGalleries[groupKey];
+        let emoji = "👶";
+        if (groupKey === "events") emoji = "🎭";
+        if (groupKey === "phpwg") emoji = "📸";
+        
+        html += `
+            <button class="gallery-group-btn" id="group-btn-${groupKey}" onclick="selectGalleryGroup('${groupKey}')">
+                ${emoji} ${group.title}
+            </button>
+        `;
+    });
+    groupsContainer.innerHTML = html;
+}
+
+function selectGalleryGroup(groupKey, targetCategoryKey = null) {
+    if (!decryptedGalleries || !decryptedGalleries[groupKey]) return;
+    currentActiveGroup = groupKey;
+    
+    // Update active group styling
+    document.querySelectorAll(".gallery-group-btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+    const activeGroupBtn = document.getElementById(`group-btn-${groupKey}`);
+    if (activeGroupBtn) activeGroupBtn.classList.add("active");
+    
+    // Render the category tabs
+    renderGalleryTabs();
+    
+    // Select correct category
+    const galleries = decryptedGalleries[groupKey].galleries;
+    const categories = Object.keys(galleries);
+    if (categories.length > 0) {
+        let selectKey = categories[0];
+        if (targetCategoryKey && galleries[targetCategoryKey]) {
+            selectKey = targetCategoryKey;
+        }
+        selectGalleryCategory(selectKey);
+    }
+}
+
+function renderGalleryTabs() {
+    const tabsContainer = document.getElementById("gallery-tabs");
+    if (!tabsContainer || !decryptedGalleries || !currentActiveGroup) return;
+    
+    const galleries = decryptedGalleries[currentActiveGroup].galleries;
+    let html = "";
+    Object.keys(galleries).forEach(fileKey => {
+        const g = galleries[fileKey];
         html += `
             <button class="gallery-tab-btn" id="tab-${fileKey}" onclick="selectGalleryCategory('${fileKey}')">
                 ${g.title} (${g.count})
@@ -488,7 +535,9 @@ function renderGalleryTabs() {
 }
 
 function selectGalleryCategory(fileKey) {
-    if (!decryptedGalleries || !decryptedGalleries[fileKey]) return;
+    if (!decryptedGalleries || !currentActiveGroup) return;
+    const galleries = decryptedGalleries[currentActiveGroup].galleries;
+    if (!galleries || !galleries[fileKey]) return;
     currentActiveCategory = fileKey;
     
     // Toggle active tab class
@@ -498,15 +547,27 @@ function selectGalleryCategory(fileKey) {
     const activeBtn = document.getElementById(`tab-${fileKey}`);
     if (activeBtn) activeBtn.classList.add("active");
     
+    // Toggle 3D banner notice
+    const notice = document.getElementById("anaglyph-notice");
+    if (notice) {
+        if (fileKey === "brulon_3d") {
+            notice.classList.remove("hidden");
+        } else {
+            notice.classList.add("hidden");
+        }
+    }
+    
     // Render photos grid
     renderPhotosGrid(fileKey);
 }
 
 function renderPhotosGrid(fileKey) {
     const grid = document.getElementById("gallery-grid");
-    if (!grid || !decryptedGalleries || !decryptedGalleries[fileKey]) return;
+    if (!grid || !decryptedGalleries || !currentActiveGroup) return;
+    const galleries = decryptedGalleries[currentActiveGroup].galleries;
+    if (!galleries || !galleries[fileKey]) return;
     
-    const items = decryptedGalleries[fileKey].items;
+    const items = galleries[fileKey].items;
     
     // Load lightbox reference index array
     lightboxItems = items;
@@ -520,13 +581,10 @@ function renderPhotosGrid(fileKey) {
     items.forEach((item, index) => {
         const isVideo = item.src.toLowerCase().endsWith(".wmv") || item.src.toLowerCase().endsWith(".avi");
         
-        // Thumb fallback: if thumb starts with photogallery, use it, else default
-        const thumbUrl = item.thumb;
-        
         html += `
             <div class="gallery-item" onclick="openLightbox(${index})">
                 ${isVideo ? `<div class="gallery-item-video-overlay">▶</div>` : ''}
-                <img src="${thumbUrl}" alt="Photo ${index + 1}" loading="lazy">
+                <img src="${item.thumb}" alt="Photo ${index + 1}" loading="lazy">
                 ${item.caption ? `<div class="gallery-item-caption">${item.caption}</div>` : ''}
             </div>
         `;

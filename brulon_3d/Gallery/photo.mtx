@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<MTSScene Version="3" >
+
+	<!-- create a procedural plane -->
+	<MTSInstance Name="photoIns" AntiAlias="1" Opacity="0">
+		<Transform>
+			<Rotate x="-90"  y="0"  z="0" />
+		</Transform>
+		<MTSGeometry Name="photoGeom"  Type="MTSPlane" Segments="1">
+			<Transform>
+				<!-- X = width, Y is unused, Z = height -->
+				<Scale x="1" y="1" z="1" />
+			</Transform>
+		</MTSGeometry>
+		<MTSMaterial Name="photoMat" ID="0" RenderMode="Texture">
+			<MTSTextureMap Type="Diffuse" Name="photoTex" HasAlpha="0" Mip="0" MipBias="0.25" />
+		</MTSMaterial>
+	</MTSInstance>
+	
+	<!-- Texture maps require a default map and alpha map if one exists. Load for photoTex above -->
+	<MTSTimeElem Name="photoElem" Type="MTSImageStream"  On="1"  Path="photo.jpg" >
+		<Target Name="MTSTexture.photoTex" />
+	</MTSTimeElem>
+
+</MTSScene>

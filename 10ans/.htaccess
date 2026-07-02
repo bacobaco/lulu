@@ -1,0 +1,4 @@
+PerlSetVar AuthFile 10ans/passlist/list.txt
+AuthName "User Name = <Prénom de Maman ou de Papa> et Password = <Nom de famille de Maman ou de Papa> ;-)"
+AuthType Basic
+require valid-user

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The LULU Web Show - Luc SAMAIN</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- App Container -->
+    <div class="app-container">
+        
+        <!-- Header / Navbar -->
+        <header class="main-header">
+            <div class="logo">
+                <span class="logo-icon">👶</span>
+                <span class="logo-text">The LULU <span class="accent-text">Show</span></span>
+            </div>
+            
+            <nav class="desktop-nav">
+                <a href="#home" class="nav-link active" data-section="home">Accueil</a>
+                <a href="#about" class="nav-link" data-section="about">Moi</a>
+                <a href="#growth" class="nav-link" data-section="growth">Poids & Taille</a>
+                <a href="#journal" class="nav-link" data-section="journal">Mon Journal</a>
+                <a href="#links" class="nav-link" data-section="links">Liens & Sorties</a>
+                <a href="#photos" class="nav-link btn-secure" data-section="photos">
+                    <span class="lock-icon">🔒</span> Album Photos
+                </a>
+                <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+            </nav>
+            
+            <button class="hamburger-menu" id="hamburger-btn" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </header>
+
+        <!-- Mobile Drawer Navigation -->
+        <div class="mobile-drawer" id="mobile-drawer">
+            <nav class="mobile-nav">
+                <a href="#home" class="mobile-link active" data-section="home">🏠 Accueil</a>
+                <a href="#about" class="mobile-link" data-section="about">👶 Qui suis-je ?</a>
+                <a href="#growth" class="mobile-link" data-section="growth">📈 Poids & Taille</a>
+                <a href="#journal" class="mobile-link" data-section="journal">📖 Mon Journal</a>
+                <a href="#links" class="mobile-link" data-section="links">🔗 Liens & Sorties</a>
+                <a href="#photos" class="mobile-link mobile-btn-secure" data-section="photos">🔒 Album Photos</a>
+                <a href="#contact" class="mobile-link" data-section="contact">✉️ Me contacter</a>
+            </nav>
+        </div>
+        <div class="drawer-overlay" id="drawer-overlay"></div>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- SECTION: HOME -->
+            <section id="home" class="content-section active">
+                <div class="hero-card glass-panel">
+                    <div class="hero-badge">Bienvenue sur mon site !</div>
+                    <h1 class="hero-title">Bonjour à toute la planète <span class="gradient-text">WEB</span> !</h1>
+                    <p class="hero-subtitle">
+                        Vous allez découvrir l'immensité de mon talent artistique on-line !
+                        Je m'appelle Luc (ou Lulu pour les intimes) et ce site retrace mes aventures,
+                        mes premiers pas, mes sourires et mes découvertes au jour le jour.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#journal" class="btn btn-primary" onclick="navigateToSection('journal')">Consulter mon journal</a>
+                        <a href="#photos" class="btn btn-secondary" onclick="navigateToSection('photos')">Voir mes photos</a>
+                    </div>
+                </div>
+
+                <!-- Stats Dashboard Panel -->
+                <div class="stats-dashboard grid-3">
+                    <div class="stat-card glass-panel">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-value" id="stat-total-visits">28 430</div>
+                        <div class="stat-label">Visiteurs depuis février 2003</div>
+                    </div>
+                    <div class="stat-card glass-panel">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-value" id="stat-visits-year">4 219</div>
+                        <div class="stat-label">Visites cette année</div>
+                    </div>
+                    <div class="stat-card glass-panel">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-value">16 mai 2007</div>
+                        <div class="stat-label">Dernière mise à jour historique</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: ABOUT -->
+            <section id="about" class="content-section">
+                <div class="grid-2">
+                    <!-- Profile card -->
+                    <div class="profile-card glass-panel text-center">
+                        <div class="avatar-container">
+                            <span class="avatar-emoji">👶</span>
+                        </div>
+                        <h2>Luc SAMAIN-CHOL</h2>
+                        <p class="birth-stat"><strong>Né le :</strong> Lundi 27 janvier 2003 à 3h04</p>
+                        <p class="birth-stat"><strong>Maternité :</strong> Sèvres, France (Chambre 104)</p>
+                        <div class="birth-metrics grid-2">
+                            <div class="metric-box">
+                                <span class="metric-val">3,970 Kg</span>
+                                <span class="metric-lbl">Poids de naissance</span>
+                            </div>
+                            <div class="metric-box">
+                                <span class="metric-val">51,5 cm</span>
+                                <span class="metric-lbl">Taille de naissance</span>
+                            </div>
+                        </div>
+                        <p class="parents-mention">
+                            Fier bébé de ma maman <strong>Isabelle Chol</strong> et de mon papa <strong>Damien Samain</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Culture & Etymology Card -->
+                    <div class="etymology-card glass-panel">
+                        <h3>📚 Un peu de culture...</h3>
+                        <div class="etymology-box">
+                            <h4>L'étymologie du prénom <span class="gradient-text">Luc</span></h4>
+                            <p>Du latin <em>lux</em>, <em>lucis</em> signifiant <strong>lumière</strong>, ou <em>lucanus</em> signifiant <strong>clair</strong>.</p>
+                            <div class="derivatives">
+                                <strong>Dérivés :</strong>
+                                <span class="badge">Luca</span>
+                                <span class="badge">Lucain</span>
+                                <span class="badge">Lucas</span>
+                                <span class="badge">Lukas</span>
+                                <span class="badge">Lucky</span>
+                                <span class="badge">Lucot</span>
+                                <span class="badge">Lucotte</span>
+                            </div>
+                            <p class="saint-main">
+                                <strong>Fête usuelle :</strong> le 18 octobre. Originaire d'Antioche, en Syrie, Luc est médecin lorsqu'il rencontre saint Paul qui le convertit au christianisme. Il est l'auteur du troisième Évangile et des Actes des Apôtres.
+                            </p>
+                        </div>
+
+                        <h4>Les autres saints fêtés :</h4>
+                        <ul class="saints-list">
+                            <li>
+                                <span class="saint-date">30 mars</span>
+                                <span class="saint-desc"><strong>Luc Wang</strong>, fidèle compagnon d'Antoine Daveluy, missionnaire en Corée au 19e siècle.</span>
+                            </li>
+                            <li>
+                                <span class="saint-date">22 avril</span>
+                                <span class="saint-desc"><strong>Luc</strong>, diacre martyr à Cordula (Perse) en 251 sous la persécution de Dèce.</span>
+                            </li>
+                            <li>
+                                <span class="saint-date">3 juin</span>
+                                <span class="saint-desc"><strong>Luc</strong>, piroguier et armateur du roi Mwanga, martyr chrétien en Ouganda.</span>
+                            </li>
+                            <li>
+                                <span class="saint-date">5 juin</span>
+                                <span class="saint-desc"><strong>Luc Vu Ba Loan</strong>, prêtre vietnamien martyrisé le 5 juin 1840.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: GROWTH -->
+            <section id="growth" class="content-section">
+                <div class="glass-panel">
+                    <h3>📈 Ma courbe de croissance</h3>
+                    <p class="section-intro">
+                        Suivez ma progression de poids et de taille au cours de ma première année. Les points noirs indiquent les mesures officielles relevées dans mon carnet de santé.
+                    </p>
+                    
+                    <div class="chart-container">
+                        <!-- Custom Interactive Chart will render here dynamically via Javascript -->
+                        <div id="interactive-growth-chart" class="growth-chart"></div>
+                    </div>
+                    
+                    <div class="chart-tabs">
+                        <button class="chart-tab-btn active" id="btn-chart-interactive">📊 Courbe dynamique</button>
+                        <button class="chart-tab-btn" id="btn-chart-legacy">📷 Courbe d'origine (GIF)</button>
+                    </div>
+                    
+                    <!-- Legacy GIF view -->
+                    <div id="legacy-chart-view" class="legacy-chart-view hidden text-center">
+                        <h4>Courbe d'origine de mon poids</h4>
+                        <img border="0" src="mon_po1.gif" alt="Courbe d'origine" class="legacy-chart-img">
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: JOURNAL -->
+            <section id="journal" class="content-section">
+                <div class="glass-panel">
+                    <div class="section-header-row">
+                        <h3>📖 Mon journal de bord</h3>
+                        <!-- Search and filter -->
+                        <div class="journal-controls">
+                            <input type="text" id="journal-search" placeholder="Rechercher un souvenir..." class="form-control search-input">
+                            <select id="journal-month-filter" class="form-control select-input">
+                                <option value="all">Tous les mois</option>
+                                <option value="JANVIER 2004">Janvier 2004</option>
+                                <option value="DECEMBRE 2003">Décembre 2003</option>
+                                <option value="NOVEMBRE 2003">Novembre 2003</option>
+                                <option value="OCTOBRE 2003">Octobre 2003</option>
+                                <option value="SEPTEMBRE 2003">Septembre 2003</option>
+                                <option value="JUILLET 2003">Juillet 2003</option>
+                                <option value="JUIN 2003">Juin 2003</option>
+                                <option value="MAI 2003">Mai 2003</option>
+                                <option value="AVRIL 2003">Avril 2003</option>
+                                <option value="MARS 2003">Mars 2003</option>
+                                <option value="FEVRIER 2003">Février 2003</option>
+                                <option value="JANVIER 2003">Janvier 2003</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Container -->
+                    <div class="timeline" id="journal-timeline">
+                        <!-- Entries render here dynamically via Javascript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: LINKS -->
+            <section id="links" class="content-section">
+                <!-- Special Events / sub-galleries -->
+                <div class="glass-panel mb-4">
+                    <h3>🎭 Week-ends & Événements familiaux</h3>
+                    <p class="section-intro">Retrouvez les galeries photos des grands week-ends et évènements en famille.</p>
+                    
+                    <div class="grid-3 events-grid">
+                        <div class="event-card glass-panel card-hover" onclick="openLegacyGallery('10ans')">
+                            <div class="event-icon">💒</div>
+                            <h4>10 Ans de Sophie & Pascal</h4>
+                            <p>Week-end au moulin pour célébrer leurs dix ans de mariage.</p>
+                            <span class="event-action">Ouvrir la galerie →</span>
+                        </div>
+                        <div class="event-card glass-panel card-hover" onclick="openLegacyGallery('brulon_2d')">
+                            <div class="event-icon">⛺</div>
+                            <h4>Week-end à Brulon en 2D</h4>
+                            <p>Notre camping et randonnée à Brulon, en Haute-Sarthe.</p>
+                            <span class="event-action">Ouvrir la galerie →</span>
+                        </div>
+                        <div class="event-card glass-panel card-hover" onclick="openLegacyGallery('brulon_3d')">
+                            <div class="event-icon">🕶️</div>
+                            <h4>Week-end à Brulon en 3D</h4>
+                            <p>Photos immersives relief 3D de notre séjour à Brulon.</p>
+                            <span class="event-action">Ouvrir la galerie →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Favorite web sites -->
+                <div class="glass-panel">
+                    <h3>🔗 Mes sites favoris</h3>
+                    <p class="section-intro">Voici une sélection de sites web recommandés, nettoyés de tous les liens obsolètes.</p>
+                    
+                    <div class="grid-2 links-grid">
+                        <div class="link-card glass-panel card-hover">
+                            <div class="link-header">
+                                <span class="link-emoji">🌳</span>
+                                <h4>Généalogie des SAMAIN</h4>
+                            </div>
+                            <p>Le site officiel de la généalogie de notre famille, géré par mon oncle Damien.</p>
+                            <a href="http://damien.samain.free.fr/" target="_blank" class="link-anchor">Visiter le site →</a>
+                        </div>
+                        <div class="link-card glass-panel card-hover">
+                            <div class="link-header">
+                                <span class="link-emoji">✈️</span>
+                                <h4>Voyage en Bolivie (DADI2000)</h4>
+                            </div>
+                            <p>Le carnet de voyage en Amérique du Sud de l'association d'amis DADI2000.</p>
+                            <a href="http://dadi2000.free.fr/" target="_blank" class="link-anchor">Découvrir le carnet →</a>
+                        </div>
+                        <div class="link-card glass-panel card-hover">
+                            <div class="link-header">
+                                <span class="link-emoji">🚗</span>
+                                <h4>Passionnés de Panhard</h4>
+                            </div>
+                            <p>Un site dédié à la restauration des voitures de collection de marque Panhard.</p>
+                            <a href="http://stsam.free.fr/" target="_blank" class="link-anchor">Consulter le site →</a>
+                        </div>
+                        <div class="link-card glass-panel card-hover">
+                            <div class="link-header">
+                                <span class="link-emoji">📸</span>
+                                <h4>phpWebGallery de Lulu</h4>
+                            </div>
+                            <p>Mon espace photographe en ligne, actif pour partager mes oeuvres dès mes 3 ans.</p>
+                            <a href="http://luc.samain.free.fr/fotoslulu/phpwebgallery" target="_blank" class="link-anchor">Accéder aux photos →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: CONTACT -->
+            <section id="contact" class="content-section">
+                <div class="glass-panel contact-container">
+                    <div class="contact-info">
+                        <h3>✉️ Contactez-moi</h3>
+                        <p>Une question, un petit mot d'amitié ou envie de m'envoyer un cadeau ? Vous pouvez m'envoyer un message directement à mon adresse e-mail ou via le formulaire.</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span class="contact-icon">📧</span>
+                                <span class="contact-text"><a href="mailto:luc.samain@free.fr">luc.samain@free.fr</a></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form id="contact-form" class="contact-form" onsubmit="handleContactSubmit(event)">
+                        <div class="form-group">
+                            <label for="c-name">Nom complet</label>
+                            <input type="text" id="c-name" placeholder="Votre nom..." required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="c-email">Adresse e-mail</label>
+                            <input type="email" id="c-email" placeholder="votre.email@exemple.com" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="c-subject">Objet</label>
+                            <input type="text" id="c-subject" placeholder="Sujet du message..." required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="c-message">Votre message</label>
+                            <textarea id="c-message" rows="5" placeholder="Écrivez votre message ici..." required class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Envoyer le message</button>
+                        <div id="contact-success" class="contact-success-msg hidden">
+                            ✅ Message envoyé avec succès !
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- SECTION: SECURE PHOTOS -->
+            <section id="photos" class="content-section">
+                
+                <!-- Lock Screen -->
+                <div id="photo-lock-screen" class="photo-lock-screen glass-panel text-center">
+                    <div class="lock-shield">🔒</div>
+                    <h3>Espace Photos Sécurisé</h3>
+                    <p>Pour accéder à mes photos et vidéos d'enfance, veuillez entrer mon mot de passe préféré (en minuscules).</p>
+                    
+                    <form id="lock-form" onsubmit="handlePasscodeSubmit(event)">
+                        <div class="passcode-input-container">
+                            <input type="password" id="passcode-input" placeholder="Tapez le mot de passe..." class="form-control passcode-input" required>
+                            <button type="submit" class="btn btn-primary passcode-btn">Déverrouiller</button>
+                        </div>
+                        <div id="lock-error-msg" class="lock-error-msg hidden">❌ Mot de passe incorrect. Recommencez !</div>
+                    </form>
+                    
+                    <div class="passcode-hint">💡 Indice : C'est mon prénom suivi de "1234567890"</div>
+                </div>
+
+                <!-- Unlocked Content -->
+                <div id="photo-gallery-content" class="photo-gallery-content hidden">
+                    <div class="glass-panel mb-4">
+                        <div class="gallery-header">
+                            <div class="gallery-title-box">
+                                <span class="gallery-emoji">📸</span>
+                                <h3>Mon Album Photos & Vidéos</h3>
+                            </div>
+                            <button class="btn btn-secondary btn-small" onclick="lockGallery()">🔒 Verrouiller</button>
+                        </div>
+                        <p class="section-intro">Explorez toutes mes photos d'enfance classées par mois de naissance, ainsi que mes premiers clips vidéos.</p>
+                        
+                        <!-- Tabs -->
+                        <div class="gallery-tabs-container" id="gallery-tabs">
+                            <!-- JS will inject tab buttons here dynamically -->
+                        </div>
+                    </div>
+                    
+                    <!-- Photos Grid -->
+                    <div class="gallery-grid-panel glass-panel">
+                        <div class="gallery-grid" id="gallery-grid">
+                            <!-- JS will render images here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        
+        <!-- Footer -->
+        <footer class="main-footer glass-panel">
+            <p>© The LULU Web Show. Tous droits réservés.</p>
+            <p>Conçu pour fêter la première année de Luc Samain. Édition modernisée sans flash ni cadres.</p>
+        </footer>
+    </div>
+
+    <!-- Lightbox Viewer -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close-btn" aria-label="Fermer">✕</button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev-btn" aria-label="Précédent">‹</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightbox-img" class="lightbox-img">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next-btn" aria-label="Suivant">›</button>
+    </div>
+
+    <!-- Embedded Scripts -->
+    <script src="journal_data.js"></script>
+    <script src="data_enc.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
